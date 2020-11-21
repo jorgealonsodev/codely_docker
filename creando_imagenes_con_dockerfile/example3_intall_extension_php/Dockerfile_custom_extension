@@ -1,0 +1,11 @@
+# Extraido de https://hub.docker.com/_/php
+FROM php:7.2-apache
+
+# Ejecutamos los siguiente comandos para instalar la extension
+RUN pecl install xdebug-2.6.0
+RUN docker-php-ext-enable xdebug
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Copiamos los siguientes archivos a la imagen
+COPY php.ini /usr/local/etc/php/
+COPY index.php/ /var/www/html/
