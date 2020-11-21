@@ -6,7 +6,7 @@ Reiniciar contenedores vacíos automáticamente.
 docker run  -it --restart=on-failure:10 mi-aplicacion-php 
 ```
 
-Politicas: 
+Políticas: 
 
 **no** - No hacer nada (por defecto)  
 
