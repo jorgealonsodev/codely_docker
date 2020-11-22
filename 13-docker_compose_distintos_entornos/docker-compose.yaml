@@ -18,7 +18,7 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-# Utiliza como passwor el del usuario de mysql que ya se encuentra funcionando en el sistema.
+#  Utiliza como password el del usuario de mysql que ya se encuentra funcionando en el sistema.
       - MYSQL_ROOT_PASSWORD=${MYSQL_USER}
     volumes:
       - ${PWD}/migrations:/docker-entrypoint-initdb.d
