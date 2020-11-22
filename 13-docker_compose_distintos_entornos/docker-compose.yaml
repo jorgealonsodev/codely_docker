@@ -4,11 +4,12 @@ services:
     build:
       context: ${PWD}
       dockerfile: Dockerfile
+# Si configuramos asi el environment, coje los datos del sistema en donde los alojamos
     environment:
-      - DISPLAY_ERRORS=On
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
+      - DISPLAY_ERRORS
+      - MYSQL_HOST
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     ports:
       - 8000:80
     depends_on: 
@@ -17,7 +18,8 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+# Utiliza como passwor el del usuario de mysql que ya se encuentra funcionando en el sistema.
+      - MYSQL_ROOT_PASSWORD=${MYSQL_USER}
     volumes:
       - ${PWD}/migrations:/docker-entrypoint-initdb.d
       - ${PWD}/mycustom.cnf:/etc/mysql/conf.d/custom.cnf
@@ -27,4 +29,3 @@ services:
       - 8080:8080
     depends_on: 
       - mysql
-       
